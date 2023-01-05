@@ -1,37 +1,41 @@
-import { TodoModel } from "./models/todo.model.js";
+import { TransactionsModel } from "../models/transactions.model.js";
 
-export const createOne = async (todo) => {
-  const createdTodo = await TodoModel.create(todo);
-  return createdTodo;
+export const createOne = async (transaction) => {
+  const createdTransaction = await TransactionsModel.create(transaction);
+  return createdTransaction;
 };
 
 export const getAll = async () => {
-  const todos = await TodoModel.find();
-  return todos;
+  const transactions = await TransactionsModel.find();
+  return transactions;
 };
 
 export const getOne = async (id) => {
   if (!id) {
     throw new Error("Id not found");
   }
-  const todo = await TodoModel.findById(id);
-  return todo;
+  const transaction = await TransactionsModel.findById(id);
+  return transaction;
 };
 
-export const updateOne = async (todo) => {
-  if (!todo._id) {
+export const updateOne = async (transaction) => {
+  if (!transaction._id) {
     throw new Error("Id not found");
   }
-  const updatedTodo = await TodoModel.findByIdAndUpdate(todo._id, todo, {
-    new: true,
-  });
-  return updatedTodo;
+  const updatedTransaction = await TransactionsModel.findByIdAndUpdate(
+    transaction._id,
+    transaction,
+    {
+      new: true,
+    }
+  );
+  return updatedTransaction;
 };
 
 export const deleteOne = async (id) => {
   if (!id) {
     throw new Error("Id not found!");
   }
-  const deletedTodo = await TodoModel.findByIdAndDelete(id);
-  return deletedTodo;
+  const deletedTransaction = await TransactionsModel.findByIdAndDelete(id);
+  return deletedTransaction;
 };

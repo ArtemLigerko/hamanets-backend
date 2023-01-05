@@ -5,14 +5,14 @@ import {
   getOneTransaction,
   updateOneTransaction,
   deleteOneTransaction,
-} from "./todo.controller.js.js";
+} from "../controllers/transactions.controller.js";
 
 const router = new Router();
 
-router.post("/todos", createOneTransaction);
-router.get("/todos", getAllTransactions);
-router.get("/todos/:id", getOneTransaction);
-router.put("/todos", updateOneTransaction);
-router.delete("/todos/:id", deleteOneTransaction);
+router.post("/transactions", createOneTransaction);
+router.get("/transactions", getAllTransactions);
+router.get("/transactions/:id", getOneTransaction);
+router.put("/transactions", updateOneTransaction);
+router.delete("/transactions/:id", deleteOneTransaction);
 
 export default router;

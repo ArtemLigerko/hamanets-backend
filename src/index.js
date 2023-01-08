@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import * as dotenv from "dotenv";
 import cors from "cors";
 
-import router from "./routes/transactions.routes.js";
+import router from "./routes/index.route.js";
 
 dotenv.config();
 
@@ -18,9 +18,6 @@ app.use("/api", router);
 
 app.get("/", (req, res) => {
   res.status(200).json("Server working");
-});
-app.get("/api/transactions", (req, res) => {
-  res.status(200).json();
 });
 
 mongoose.set("strictQuery", true);

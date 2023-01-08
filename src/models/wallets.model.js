@@ -1,14 +1,12 @@
-import { Schema, model } from "mongoose";
+import { model, Schema } from "mongoose";
 
-const TransactionsSchema = new Schema({
+const WalletsSchema = new Schema({
   id: { type: String, required: true },
   walletId: { type: String, required: true },
   walletName: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
   updatededAt: { type: Date, default: Date.now },
-  type: { type: String, required: true },
-  category: { type: String, required: true },
   sum: { type: Number },
 });
 
-export const TransactionsModel = model("Transactions", TransactionsSchema);
+export const WalletsModel = model("Wallets", WalletsSchema);

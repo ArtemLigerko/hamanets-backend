@@ -18,24 +18,25 @@ export const getAll = async () => {
 //   return Wallet;
 // };
 
-// export const updateOne = async (wallet) => {
-//   if (!wallet._id) {
-//     throw new Error("Id not found");
-//   }
-//   const updatedWallet = await WalletsModel.findByIdAndUpdate(
-//     wallet._id,
-//     wallet,
-//     {
-//       new: true,
-//     }
-//   );
-//   return updatedWallet;
-// };
+export const updateOne = async (wallet) => {
+  console.log(wallet);
+  if (!wallet.id) {
+    throw new Error("Id not found");
+  }
+  const updatedWallet = await WalletsModel.findOneAndUpdate(
+    { id: wallet.id },
+    { $inc: { total: wallet.total } }, // increase wallet total by transaction sum
+    {
+      new: true,
+    }
+  );
+  return updatedWallet;
+};
 
 export const deleteOne = async (id) => {
   if (!id) {
     throw new Error("Id not found!");
   }
-  const deletedWallet = await WalletsModel.findByIdAndDelete(id);
+  const deletedWallet = await WalletsModel.findOneAndDelete({ id: id });
   return deletedWallet;
 };

@@ -2,7 +2,7 @@ import {
   createOne,
   getAll,
   // getOne,
-  // updateOne,
+  updateOne,
   deleteOne,
 } from "../services/wallets.services.js";
 
@@ -24,14 +24,14 @@ export const getAllWallets = async (req, res) => {
   }
 };
 
-export const getOneWallet = async (req, res) => {
-  try {
-    const response = await getOne(req.params.id);
-    return res.json(response);
-  } catch (e) {
-    res.status(500).json(e.message);
-  }
-};
+// export const getOneWallet = async (req, res) => {
+//   try {
+//     const response = await getOne(req.params.id);
+//     return res.json(response);
+//   } catch (e) {
+//     res.status(500).json(e.message);
+//   }
+// };
 
 export const updateOneWallet = async (req, res) => {
   try {

@@ -4,7 +4,7 @@ const WalletsSchema = new Schema({
   id: { type: String, required: true },
   walletName: { type: String, required: true },
   createdAt: { type: Date },
-  updatededAt: { type: Date },
+  updatedAt: { type: Date },
   initialSum: { type: Number, require: true },
   total: { type: Number, require: true },
 });

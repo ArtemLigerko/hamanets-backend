@@ -19,7 +19,6 @@ export const getAll = async () => {
 // };
 
 export const updateOne = async (wallet) => {
-  console.log(wallet);
   if (!wallet.id) {
     throw new Error("Id not found");
   }

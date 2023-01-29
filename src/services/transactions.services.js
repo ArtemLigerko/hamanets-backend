@@ -6,7 +6,9 @@ export const createOne = async (transaction) => {
 };
 
 export const getAll = async () => {
-  const transactions = await TransactionsModel.find();
+  const transactions = await TransactionsModel.find({
+    $sort: { updatedAt: -1 },
+  });
   return transactions;
 };
 

@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import tokenModel from "../models/token.model.js";
+import { TokenModel } from "../models/token.model.js";
 
 export const generateTokens = (payload) => {
   const accessToken = jwt.sign(payload, process.env.JWT_ACCESS_SECRET, {
@@ -33,21 +33,21 @@ export const validateRefreshToken = (token) => {
 };
 
 export const saveToken = async (userId, refreshToken) => {
-  const tokenData = await tokenModel.findOne({ user: userId });
+  const tokenData = await TokenModel.findOne({ user: userId });
   if (tokenData) {
     tokenData.refreshToken = refreshToken;
     return tokenData.save();
   }
-  const token = await tokenModel.create({ user: userId, refreshToken });
+  const token = await TokenModel.create({ user: userId, refreshToken });
   return token;
 };
 
 export const removeToken = async (refreshToken) => {
-  const tokenData = await tokenModel.deleteOne({ refreshToken });
+  const tokenData = await TokenModel.deleteOne({ refreshToken });
   return tokenData;
 };
 
 export const findToken = async (refreshToken) => {
-  const tokenData = await tokenModel.findOne({ refreshToken });
+  const tokenData = await TokenModel.findOne({ refreshToken });
   return tokenData;
 };

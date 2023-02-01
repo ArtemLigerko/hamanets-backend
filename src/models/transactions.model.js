@@ -1,14 +1,14 @@
 import { Schema, model } from "mongoose";
 
-const TransactionsSchema = new Schema({
-  id: { type: String, required: true },
-  walletId: { type: String, required: true },
-  walletName: { type: String, required: true },
-  createdAt: { type: Date, default: Date.now },
-  updatededAt: { type: Date, default: Date.now },
-  type: { type: String, required: true },
-  category: { type: String, required: true },
-  sum: { type: Number },
-});
+const TransactionsSchema = new Schema(
+  {
+    wallet_id: { type: Schema.Types.ObjectId, ref: "Wallets" },
+    walletName: { type: String, required: true },
+    type: { type: String, required: true },
+    category: { type: String, required: true },
+    sum: { type: Number },
+  },
+  { timestamps: true }
+);
 
 export const TransactionsModel = model("Transactions", TransactionsSchema);

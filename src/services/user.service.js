@@ -8,7 +8,7 @@ import {
   validateRefreshToken,
   findToken,
 } from "./token.service.js";
-import UserModel from "../models/user.model.js";
+import { UserModel } from "../models/user.model.js";
 import UserDto from "../dtos/user.dtos.js"; //Dto - data transfer object
 import ApiError from "../exceptions/api.error.js";
 
@@ -19,13 +19,10 @@ export const registrationService = async (username, password) => {
     throw ApiError.BadRequest(`User with user name ${username} already exist`);
   }
   const hashPassword = await bcrypt.hash(password, 3);
-  const activationLink = uuidv4();
-  console.log(activationLink);
 
   const user = await UserModel.create({
     username,
     password: hashPassword,
-    activationLink,
   });
 
   const userDto = new UserDto(user); // id, username

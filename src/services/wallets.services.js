@@ -30,7 +30,7 @@ export const updateOne = async (wallet) => {
     throw new Error("Id not found");
   }
   const updatedWallet = await WalletsModel.findOneAndUpdate(
-    { id: wallet.id },
+    { _id: wallet.id },
     { $inc: { total: wallet.total } }, // increase wallet total by transaction sum
     {
       new: true,

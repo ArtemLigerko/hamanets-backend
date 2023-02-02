@@ -43,6 +43,6 @@ export const deleteOne = async (id) => {
   if (!id) {
     throw new Error("Id not found!");
   }
-  const deletedWallet = await WalletsModel.findOneAndDelete({ id: id });
+  const deletedWallet = await WalletsModel.findOneAndDelete({ _id: id });
   return deletedWallet;
 };

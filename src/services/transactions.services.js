@@ -5,8 +5,12 @@ export const createOne = async (transaction) => {
   return createdTransaction;
 };
 
-export const getAll = async () => {
+export const getAll = async (id) => {
+  if (!id) {
+    throw new Error("Id not found");
+  }
   const transactions = await TransactionsModel.find({
+    user_id: id,
     $sort: { updatedAt: -1 },
   });
   return transactions;
@@ -16,7 +20,7 @@ export const getOne = async (id) => {
   if (!id) {
     throw new Error("Id not found");
   }
-  const transaction = await TransactionsModel.findById(id);
+  const transaction = await TransactionsModel.findById({ user_id: id });
   return transaction;
 };
 

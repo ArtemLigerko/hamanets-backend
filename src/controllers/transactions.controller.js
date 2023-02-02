@@ -17,7 +17,7 @@ export const createOneTransaction = async (req, res) => {
 
 export const getAllTransactions = async (req, res) => {
   try {
-    const response = await getAll();
+    const response = await getAll(req.user.id);
     return res.json(response);
   } catch (e) {
     res.status(500).json(e.message);

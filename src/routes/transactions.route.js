@@ -6,13 +6,14 @@ import {
   updateOneTransaction,
   deleteOneTransaction,
 } from "../controllers/transactions.controller.js";
+import authMiddleware from "../middlewares/auth.middleware.js";
 
 const transactionsRoutes = new Router();
 
-transactionsRoutes.post("/", createOneTransaction);
-transactionsRoutes.get("/", getAllTransactions);
-transactionsRoutes.get("/:id", getOneTransaction);
-transactionsRoutes.put("/", updateOneTransaction);
-transactionsRoutes.delete("/:id", deleteOneTransaction);
+transactionsRoutes.post("/", authMiddleware, createOneTransaction);
+transactionsRoutes.get("/", authMiddleware, getAllTransactions);
+transactionsRoutes.get("/:id", authMiddleware, getOneTransaction);
+transactionsRoutes.put("/", authMiddleware, updateOneTransaction);
+transactionsRoutes.delete("/:id", authMiddleware, deleteOneTransaction);
 
 export default transactionsRoutes;

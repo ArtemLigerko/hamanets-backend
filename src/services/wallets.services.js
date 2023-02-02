@@ -9,8 +9,11 @@ export const createOne = async (wallet) => {
   return createdWallet;
 };
 
-export const getAll = async () => {
-  const Wallets = await WalletsModel.find();
+export const getAll = async (id) => {
+  if (!id) {
+    throw new Error("Id not found");
+  }
+  const Wallets = await WalletsModel.find({ user_id: id });
   return Wallets;
 };
 

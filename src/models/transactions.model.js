@@ -3,6 +3,7 @@ import { Schema, model } from "mongoose";
 const TransactionsSchema = new Schema(
   {
     wallet_id: { type: Schema.Types.ObjectId, ref: "Wallets" },
+    user_id: { type: Schema.Types.ObjectId, ref: "User" },
     walletName: { type: String, required: true },
     type: { type: String, required: true },
     category: { type: String, required: true },

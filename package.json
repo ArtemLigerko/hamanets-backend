@@ -1,7 +1,10 @@
 {
-  "name": "hamanets---backend",
-  "version": "1.0.0",
-  "description": "",
+  "name": "hamanets-backend",
+  "version": "0.1.0",
+  "authors:": {
+    "name": "Artem Ligerko",
+    "email": "ligerko.aa@gmail.com"
+  },
   "main": "src/index.js",
   "type": "module",
   "scripts": {

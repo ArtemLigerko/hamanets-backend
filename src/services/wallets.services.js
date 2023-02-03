@@ -1,10 +1,7 @@
 import { WalletsModel } from "../models/wallets.model.js";
 
 export const createOne = async (wallet) => {
-  console.log("createOne");
-  console.log(wallet);
   const createdWallet = await WalletsModel.create(wallet);
-  console.log(createdWallet);
 
   return createdWallet;
 };

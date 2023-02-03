@@ -16,7 +16,6 @@ export const createOneWallet = async (req, res) => {
 };
 
 export const getAllWallets = async (req, res) => {
-  console.log(req.user);
   try {
     const response = await getAll(req.user.id);
     return res.json(response);
